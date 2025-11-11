@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arceus</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="bg-dark text-white" id="body">
+  <a href="#conteudo-principal" class="visually-hidden-focusable">Pular para o conteúdo principal</a>
+
+  <header role="banner">
+    <nav class="navbar navbar-expand-lg bg-black py-3" role="navigation" aria-label="Menu principal">
+      <div class="container-fluid d-flex align-items-center justify-content-between px-4">
+        <a class="navbar-brand text-danger fs-3 fw-bold" href="./index.html">ARCEUS</a>
+
+        <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="d-flex align-items-center gap-3">
+          <img src="./img/download (1).jpeg" alt="Imagem de perfil do usuário" class="rounded-circle profile-picture" width="35" height="35" />
+          <div class="d-flex align-items-center gap-1">
+            <span><a style="text-decoration: none;" href="./login.html">Fazer Login</a></span>
+            <i class="fa-regular fa-square-caret-down" aria-hidden="true"></i>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-capitalize">
+              <li class="nav-item mx-2"><a class="nav-link active text-white fw-bold" href="./index.html">Home</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Filmes</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Séries</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Populares</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Trends</a></li>
+            </ul>
+          </div>
+
+          <div class="toggle position-relative bg-white rounded-pill d-flex align-items-center justify-content-around cursor-pointer" id="themeToggle" role="button" tabindex="0" aria-label="Alternar modo escuro/claro" aria-pressed="false">
+            <i class="fa-solid fa-moon toggle-icon" aria-hidden="true"></i>
+            <i class="fa-solid fa-sun toggle-icon" aria-hidden="true"></i>
+            <div class="toggle-ball position-absolute rounded-circle" id="toggleBall"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <aside class="sidebar bg-black d-flex flex-column align-items-center py-4 gap-4 position-fixed top-0 start-0 vh-100" role="complementary" aria-label="Menu lateral">
+    <a href="./index.html" aria-label="Página inicial"><i class="fa-solid fa-house left-menu-icons"></i></a>
+    <a href="./pesquisar.html" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass left-menu-icons"></i></a>
+    <i class="fa-regular fa-bookmark left-menu-icons" title="Favoritos" role="img"></i>
+    <i class="fa-solid fa-tv left-menu-icons" title="Séries" role="img"></i>
+    <i class="fa-solid fa-cart-shopping left-menu-icons" title="Loja" role="img"></i>
+  </aside>
+
+  <main id="conteudo-principal" class="main-content ps-5" role="main">
+    <div class="container-fluid py-5">
+      <h1 class="display-4 fw-bold mb-2">Bem-vindo ao <span class="text-danger">ARCEUS</span></h1>
+      <p class="lead text-secondary mb-5">Seu streaming favorito.</p>
+
+      <section class="carousel-section" aria-label="Filmes em alta">
+        <h2 class="carousel-title ps-4">Em Alta</h2>
+        <div class="carousel-container">
+          <button class="carousel-nav left" onclick="scrollCarousel('track1', -600)" aria-label="Ver filmes anteriores">❮</button>
+          <div class="carousel-wrapper">
+            <div id="track1" class="carousel-track" role="group" aria-label="Lista de filmes em alta">
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 211026.png" alt="Capa do filme Neon Shadows">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">Neon Shadows</h6>
+                  <p class="movie-info">2025 • Cyberpunk • 2h 12min</p>
+                  <div class="d-flex gap-2 mt-2">
+                    <span class="badge bg-danger small">Novo</span>
+                    <span class="text-warning small">4.8 ★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 211138.png" alt="Capa do filme Eclipse de Fogo">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">Eclipse de Fogo</h6>
+                  <p class="movie-info">2026 • Ação • 2h 45min</p>
+                  <div class="d-flex gap-2 mt-2">
+                    <span class="badge bg-success small">Popular</span>
+                    <span class="text-warning small">4.9 ★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 211413.png" alt="Capa do filme Código Infinito">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">Código Infinito</h6>
+                  <p class="movie-info">2025 • Ficção • 2h 18min</p>
+                  <div class="d-flex gap-2 mt-2">
+                    <span class="badge bg-info small">Exclusivo</span>
+                    <span class="text-warning small">5.0 ★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 212908.png" alt="Capa do filme Tempestade Zero">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">Tempestade Zero</h6>
+                  <p class="movie-info">2027 • Suspense • 1h 58min</p>
+                  <div class="d-flex gap-2 mt-2">
+                    <span class="badge bg-warning text-dark small">Em Breve</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 212940.png" alt="Capa do filme Reino Esquecido">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">Reino Esquecido</h6>
+                  <p class="movie-info">2025 • Fantasia • 2h 30min</p>
+                  <div class="d-flex gap-2 mt-2">
+                    <span class="badge bg-primary small">Épico</span>
+                    <span class="text-warning small">4.7 ★</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-nav right" onclick="scrollCarousel('track1', 600)" aria-label="Ver próximos filmes">❯</button>
+        </div>
+      </section>
+
+      <section class="carousel-section" aria-label="Originais Arceus">
+        <h2 class="carousel-title ps-4">Originais ARCEUS</h2>
+        <div class="carousel-container">
+          <button class="carousel-nav left" onclick="scrollCarousel('track2', -600)" aria-label="Ver filmes anteriores">❮</button>
+          <div class="carousel-wrapper">
+            <div id="track2" class="carousel-track" role="group" aria-label="Lista de originais Arceus">
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 213301.png" alt="Capa do filme Legado das Sombras">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">Legado das Sombras</h6>
+                  <p class="movie-info">2025 • Drama • 1h 50min</p>
+                  <span class="badge bg-danger small">Original</span>
+                </div>
+              </div>
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 213514.png" alt="Capa do filme A Queda do Império">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">A Queda do Império</h6>
+                  <p class="movie-info">2026 • Histórico • 2h 20min</p>
+                  <span class="badge bg-danger small">Original</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-nav right" onclick="scrollCarousel('track2', 600)" aria-label="Ver próximos filmes">❯</button>
+        </div>
+      </section>
+
+      <section class="carousel-section" aria-label="Continue assistindo">
+        <h2 class="carousel-title ps-4">Continue Assistindo</h2>
+        <div class="carousel-container">
+          <button class="carousel-nav left" onclick="scrollCarousel('track3', -600)" aria-label="Ver anteriores">❮</button>
+          <div class="carousel-wrapper">
+            <div id="track3" class="carousel-track" role="group" aria-label="Filmes assistidos">
+              <div class="movie-card">
+                <img src="./img/Captura de tela 2025-11-05 211026.png" alt="Capa do filme Neon Shadows">
+                <div class="movie-overlay">
+                  <h6 class="movie-title">Neon Shadows</h6>
+                  <p class="movie-info">Episódio 3 • 45min restantes</p>
+                  <div class="progress mt-2" style="height: 4px;">
+                    <div class="progress-bar bg-danger" style="width: 65%;" aria-label="Progresso de 65%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-nav right" onclick="scrollCarousel('track3', 600)" aria-label="Ver próximos">❯</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="text-center py-3 mt-5 text-secondary" role="contentinfo">
+    <small>&copy; 2025 Arceus - Todos os direitos reservados.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function scrollCarousel(id, pixels) {
+      const carousel = document.getElementById(id);
+      carousel.scrollBy({ left: pixels, behavior: 'smooth' });
+    }
+
+    const body = document.getElementById('body');
+    const toggle = document.getElementById('themeToggle');
+    const ball = document.getElementById('toggleBall');
+    const savedTheme = localStorage.getItem('theme');
+    let isDark = savedTheme !== 'light';
+
+    function applyTheme() {
+      if (isDark) {
+        body.classList.remove('light-mode');
+        ball.style.right = '2px';
+        ball.style.left = 'auto';
+        ball.style.backgroundColor = 'black';
+        toggle.setAttribute('aria-pressed', 'true');
+      } else {
+        body.classList.add('light-mode');
+        ball.style.left = '2px';
+        ball.style.right = 'auto';
+        ball.style.backgroundColor = 'white';
+        toggle.setAttribute('aria-pressed', 'false');
+      }
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    applyTheme();
+
+    toggle.addEventListener('click', () => {
+      isDark = !isDark;
+      applyTheme();
+    });
+  </script>
+</body>
+</html>

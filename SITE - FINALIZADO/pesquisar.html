@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesquisar | Arceus</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    body.light-mode {
+      background-color: #f8f9fa !important;
+      color: #212529 !important;
+    }
+
+    .light-mode .navbar,
+    .light-mode .sidebar {
+      background-color: #fff !important;
+      color: #000 !important;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .light-mode .search-bar {
+      background-color: #fff !important;
+      color: #000 !important;
+      border: 1px solid #ccc !important;
+    }
+
+    .light-mode .movie-card {
+      background-color: #e9ecef !important;
+      color: #000 !important;
+    }
+
+    .light-mode .movie-info h5 { color: #dc3545 !important; }
+    .light-mode .movie-info p { color: #555 !important; }
+
+    .light-mode a,
+    .light-mode .nav-link,
+    .light-mode span,
+    .light-mode i { color: #000 !important; }
+
+    .light-mode a:hover,
+    .light-mode .nav-link:hover,
+    .light-mode i:hover { color: #dc3545 !important; }
+
+    .movie-card {
+      background-color: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+      z-index: 5;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      background: #222;
+    }
+
+    .movie-info { padding: 10px; }
+
+    .search-bar {
+      max-width: 600px;
+      margin: 20px auto;
+      border-radius: 20px;
+      background-color: #222;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+    }
+
+    .search-bar:focus {
+      outline: none;
+      box-shadow: 0 0 10px red;
+    }
+
+    .sidebar {
+      z-index: 9999 !important;
+      width: 70px;
+    }
+
+    .sidebar i { font-size: 1.4rem; transition: transform 0.2s; }
+    .sidebar i:hover { transform: scale(1.2); color: red !important; }
+
+    .navbar { z-index: 10000 !important; }
+
+    .toggle {
+      width: 50px;
+      height: 25px;
+      padding: 3px;
+      cursor: pointer;
+    }
+
+    .toggle-icon {
+      font-size: 1rem;
+      color: #666;
+      transition: color 0.3s;
+    }
+
+    .toggle.active .fa-moon { color: #fff; }
+    .toggle.active .fa-sun { color: #ffd700; }
+
+    .toggle-ball {
+      width: 19px;
+      height: 19px;
+      background: #dc3545;
+      transition: transform 0.3s ease;
+      left: 3px;
+    }
+
+    .toggle.active .toggle-ball {
+      transform: translateX(25px);
+    }
+
+    
+    .search-bar {
+      display: block !important;
+      width: 100% !important;
+      max-width: 600px !important;
+    }
+
+    @media (max-width: 767px) {
+      .search-bar {
+        margin: 10px auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-dark text-white" id="body">
+
+  <nav class="navbar navbar-expand-lg bg-black py-3 fixed-top" role="navigation" aria-label="Menu principal">
+    <div class="container-fluid d-flex align-items-center justify-content-between px-4">
+
+      <a class="navbar-brand text-danger fs-3 fw-bold" href="./index.html">ARCEUS</a>
+
+     
+      <input id="searchInput" type="text" class="form-control search-bar" placeholder="Buscar filmes..." aria-label="Buscar filmes" />
+
+      <div class="d-flex align-items-center gap-3">
+
+        <button class="navbar-toggler bg-danger d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <img src="./img/download (1).jpeg" alt="Foto de perfil" class="rounded-circle profile-picture" width="35" height="35" />
+
+        <div class="d-flex align-items-center gap-1 text-white">
+          <a href="./entrar.html" style="text-decoration: none; color: inherit;">Entrar</a>
+          <i class="fa-regular fa-square-caret-down"></i>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-capitalize">
+            <li class="nav-item mx-2"><a class="nav-link active text-white fw-bold" href="./index.html">Home</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Filmes</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Séries</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Populares</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Trends</a></li>
+          </ul>
+        </div>
+
+        <div class="toggle position-relative bg-white rounded-pill d-flex align-items-center justify-content-around" id="themeToggle" role="button" aria-label="Alternar modo claro e escuro">
+          <i class="fa-solid fa-moon toggle-icon"></i>
+          <i class="fa-solid fa-sun toggle-icon"></i>
+          <div class="toggle-ball position-absolute rounded-circle" id="toggleBall"></div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <aside class="sidebar bg-black d-flex flex-column align-items-center py-4 gap-4 position-fixed top-0 start-0 vh-100" role="complementary">
+    <a href="./index.html" title="Home"><i class="fa-solid fa-house left-menu-icons text-white"></i></a>
+    <a href="./pesquisar.html" title="Buscar"><i class="fa-solid fa-magnifying-glass left-menu-icons text-white"></i></a>
+    <a href="#" title="Favoritos"><i class="fa-regular fa-bookmark left-menu-icons text-white"></i></a>
+    <a href="#" title="Minha Lista"><i class="fa-solid fa-tv left-menu-icons text-white"></i></a>
+    <a href="#" title="Loja"><i class="fa-solid fa-cart-shopping left-menu-icons text-white"></i></a>
+  </aside>
+
+  <main class="container mt-5 pt-5 ps-5" id="conteudoPrincipal">
+    <div class="row" id="movieList"></div>
+  </main>
+
+  <!-- FORMULÁRIO DE CONTATO (ACESSIBILIDADE + 2ª INTERATIVIDADE JS) -->
+  <section id="contato" class="bg-black text-white py-5 mt-5">
+    <div class="container">
+      <h3 class="text-center text-danger fw-bold mb-4">Entre em Contato</h3>
+      <form id="contactForm" class="mx-auto" style="max-width:600px;" novalidate>
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome completo</label>
+          <input type="text" id="nome" class="form-control" aria-label="Digite seu nome completo" required>
+          <div class="invalid-feedback">Por favor, preencha seu nome.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" aria-label="Digite seu email" required>
+          <div class="invalid-feedback">Informe um email válido.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="mensagem" class="form-label">Mensagem</label>
+          <textarea id="mensagem" class="form-control" rows="4" aria-label="Digite sua mensagem" required></textarea>
+          <div class="invalid-feedback">Digite sua mensagem.</div>
+        </div>
+
+        <button type="submit" class="btn btn-danger w-100">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-center text-secondary py-4 mt-5" role="contentinfo">
+    <p class="mb-1">© 2025 Arceus Filmes. Todos os direitos reservados.</p>
+    <p class="mb-0">
+      <a href="./index.html" class="text-danger text-decoration-none">Home</a> •
+      <a href="./pesquisar.html" class="text-danger text-decoration-none">Pesquisar</a> •
+      <a href="#contato" class="text-danger text-decoration-none">Contato</a>
+    </p>
+  </footer>
+
+  <script>
+    const filmes = [
+      { titulo: "Neon Shadows", ano: 2025, genero: "Cyberpunk", duracao: "2h 12min", img: "./img/Captura de tela 2025-11-05 211026.png", nota: 4.8 },
+      { titulo: "Eclipse de Fogo", ano: 2026, genero: "Ação", duracao: "2h 45min", img: "./img/Captura de tela 2025-11-05 211138.png", nota: 4.9 },
+      { titulo: "Código Infinito", ano: 2025, genero: "Ficção", duracao: "2h 18min", img: "./img/Captura de tela 2025-11-05 211413.png", nota: 5.0 },
+      { titulo: "Tempestade Zero", ano: 2027, genero: "Suspense", duracao: "1h 58min", img: "./img/Captura de tela 2025-11-05 212908.png", nota: 4.6 },
+      { titulo: "Reino Esquecido", ano: 2025, genero: "Fantasia", duracao: "2h 30min", img: "./img/Captura de tela 2025-11-05 212940.png", nota: 4.7 },
+      { titulo: "Legado das Sombras", ano: 2025, genero: "Drama", duracao: "1h 50min", img: "./img/Captura de tela 2025-11-05 213301.png", nota: 4.3 },
+      { titulo: "A Queda do Império", ano: 2026, genero: "Histórico", duracao: "2h 20min", img: "./img/Captura de tela 2025-11-05 213514.png", nota: 4.9 }
+    ];
+
+    const movieList = document.getElementById("movieList");
+    const searchInput = document.getElementById("searchInput");
+    const body = document.getElementById('body');
+    const themeToggle = document.getElementById('themeToggle');
+    const toggleBall = document.getElementById('toggleBall');
+
+    let isDark = localStorage.getItem('theme') !== 'light';
+    applyTheme();
+
+    function applyTheme() {
+      if (isDark) {
+        body.classList.remove('light-mode');
+        themeToggle.classList.add('active');
+        toggleBall.style.transform = 'translateX(0)';
+      } else {
+        body.classList.add('light-mode');
+        themeToggle.classList.remove('active');
+        toggleBall.style.transform = 'translateX(25px)';
+      }
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      isDark = !isDark;
+      applyTheme();
+    });
+
+    function renderMovies(lista) {
+      movieList.innerHTML = "";
+      if (lista.length === 0) {
+        movieList.innerHTML = `<div class="text-center mt-5"><h4>Nenhum filme encontrado</h4></div>`;
+        return;
+      }
+
+      lista.forEach(filme => {
+        movieList.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="movie-card shadow">
+              <img src="${filme.img}" alt="${filme.titulo}" loading="lazy">
+              <div class="movie-info">
+                <h5 class="fw-bold text-danger">${filme.titulo}</h5>
+                <p class="mb-1 text-secondary">${filme.ano} • ${filme.genero} • ${filme.duracao}</p>
+                <span class="badge bg-warning text-dark">${filme.nota} ★</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    renderMovies(filmes);
+
+    searchInput.addEventListener("input", () => {
+      const termo = searchInput.value.toLowerCase();
+      const filtrados = filmes.filter(f =>
+        f.titulo.toLowerCase().includes(termo) ||
+        f.genero.toLowerCase().includes(termo) ||
+        String(f.ano).includes(termo)
+      );
+      renderMovies(filtrados);
+    });
+
+    // VALIDAÇÃO DO FORMULÁRIO
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let valido = true;
+
+      form.querySelectorAll("input, textarea").forEach((campo) => {
+        if (!campo.value.trim()) {
+          campo.classList.add("is-invalid");
+          valido = false;
+        } else {
+          campo.classList.remove("is-invalid");
+        }
+      });
+
+      if (valido) {
+        alert("Mensagem enviada com sucesso!");
+        form.reset();
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

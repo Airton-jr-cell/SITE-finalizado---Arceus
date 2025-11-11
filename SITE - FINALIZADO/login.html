@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro | Arceus</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="bg-dark text-white" id="body">
+  <a href="#conteudo-principal" class="visually-hidden-focusable">Pular para o conteúdo principal</a>
+
+  <header role="banner">
+    <nav class="navbar navbar-expand-lg bg-black py-3" role="navigation" aria-label="Menu principal">
+      <div class="container-fluid d-flex align-items-center justify-content-between px-4">
+
+        <a class="navbar-brand text-danger fs-3 fw-bold" href="./index.html">ARCEUS</a>
+
+        <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="d-flex align-items-center gap-3">
+          <img src="./img/download (1).jpeg" alt="Imagem de perfil do usuário" class="rounded-circle profile-picture" width="35" height="35" />
+          <div class="d-flex align-items-center gap-1">
+            <span><a style="text-decoration: none;" href="./entrar.html">Entrar</a></span>
+            <i class="fa-regular fa-square-caret-down" aria-hidden="true"></i>
+          </div>
+        
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-capitalize">
+              <li class="nav-item mx-2"><a class="nav-link active text-white fw-bold" href="./index.html">Home</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Filmes</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Séries</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Populares</a></li>
+              <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Trends</a></li>
+            </ul>
+          </div>
+
+          <div class="toggle position-relative bg-white rounded-pill d-flex align-items-center justify-content-around cursor-pointer" id="themeToggle" role="button" tabindex="0" aria-label="Alternar modo escuro/claro" aria-pressed="false">
+            <i class="fa-solid fa-moon toggle-icon" aria-hidden="true"></i>
+            <i class="fa-solid fa-sun toggle-icon" aria-hidden="true"></i>
+            <div class="toggle-ball position-absolute rounded-circle" id="toggleBall"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <aside class="sidebar bg-black d-flex flex-column align-items-center py-4 gap-4 position-fixed top-0 start-0 vh-100" role="complementary" aria-label="Menu lateral">
+    <a href="./index.html" aria-label="Página inicial"><i class="fa-solid fa-house left-menu-icons"></i></a>
+    <a href="./pesquisar.html" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass left-menu-icons"></i></a>
+    <i class="fa-regular fa-bookmark left-menu-icons" role="img" title="Favoritos"></i>
+    <i class="fa-solid fa-tv left-menu-icons" role="img" title="Séries"></i>
+    <i class="fa-solid fa-cart-shopping left-menu-icons" role="img" title="Loja"></i>
+  </aside>
+
+  <main id="conteudo-principal" class="main-content ps-5" role="main">
+    <div class="container py-5">
+      <h1 class="display-4 fw-bold">Bem-vindo ao <span class="text-danger">ARCEUS</span></h1>
+      <p class="lead">Faça seu cadastro agora mesmo!</p>
+
+      <form class="p-4 bg-dark rounded-4 border border-secondary shadow needs-validation" novalidate role="form" aria-label="Formulário de cadastro">
+        <div class="mb-4">
+          <label for="nameInput" class="form-label fs-5 text-light">Nome</label>
+          <input 
+            type="text"
+            class="form-control form-control-lg"
+            id="nameInput"
+            placeholder="Seu nome completo"
+            required
+            minlength="2"
+            aria-required="true"
+          >
+          <div class="invalid-feedback">
+            Por favor, insira seu nome completo.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="emailInput" class="form-label fs-5 text-light">E-mail</label>
+          <input 
+            type="email"
+            class="form-control form-control-lg"
+            id="emailInput"
+            placeholder="name@example.com"
+            required
+            aria-required="true"
+          >
+          <div class="invalid-feedback">
+            Insira um e-mail válido.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="confirmEmailInput" class="form-label fs-5 text-light">Confirme seu E-mail</label>
+          <input 
+            type="email"
+            class="form-control form-control-lg"
+            id="confirmEmailInput"
+            placeholder="name@example.com"
+            required
+            aria-required="true"
+          >
+          <div class="invalid-feedback">
+            Os e-mails não coincidem.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="passwordInput" class="form-label fs-5 text-light">Senha</label>
+          <input 
+            type="password"
+            class="form-control form-control-lg"
+            id="passwordInput"
+            required
+            minlength="8"
+            maxlength="20"
+            aria-required="true"
+          >
+          <div class="form-text text-secondary">
+            Mínimo 8 caracteres, máximo 20.
+          </div>
+          <div class="invalid-feedback">
+            A senha deve ter entre 8 e 20 caracteres.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="confirmPasswordInput" class="form-label fs-5 text-light">Confirme a senha</label>
+          <input 
+            type="password"
+            class="form-control form-control-lg"
+            id="confirmPasswordInput"
+            required
+            aria-required="true"
+          >
+          <div class="form-text text-secondary">
+            Repita exatamente a senha acima.
+          </div>
+          <div class="invalid-feedback">
+            As senhas não coincidem.
+          </div>
+        </div>
+
+        <div class="form-check mb-4">
+          <input 
+            class="form-check-input"
+            type="checkbox"
+            id="termsCheck"
+            required
+            aria-required="true"
+          >
+          <label class="form-check-label fs-6 text-light" for="termsCheck">
+            Aceito os <a href="#" class="text-danger text-decoration-underline">Termos e Condições</a>
+          </label>
+          <div class="invalid-feedback">
+            Você deve aceitar os termos.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-danger btn-lg" aria-label="Enviar cadastro">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="text-center py-3 mt-5 text-secondary" role="contentinfo">
+    <small>&copy; 2025 Arceus - Todos os direitos reservados.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const body = document.getElementById('body');
+    const toggle = document.getElementById('themeToggle');
+    const ball = document.getElementById('toggleBall');
+
+    const savedTheme = localStorage.getItem('theme');
+    let isDark = savedTheme !== 'light';
+
+    function applyTheme() {
+      if (isDark) {
+        body.classList.remove('light-mode');
+        ball.style.right = '2px';
+        ball.style.left = 'auto';
+        ball.style.backgroundColor = 'black';
+        toggle.setAttribute('aria-pressed', 'true');
+      } else {
+        body.classList.add('light-mode');
+        ball.style.left = '2px';
+        ball.style.right = 'auto';
+        ball.style.backgroundColor = 'white';
+        toggle.setAttribute('aria-pressed', 'false');
+      }
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    applyTheme();
+
+    toggle.addEventListener('click', () => {
+      isDark = !isDark;
+      applyTheme();
+    });
+
+    const form = document.querySelector('.needs-validation');
+    const email = document.getElementById('emailInput');
+    const confirmEmail = document.getElementById('confirmEmailInput');
+    const password = document.getElementById('passwordInput');
+    const confirmPassword = document.getElementById('confirmPasswordInput');
+
+    const validateMatch = (field1, field2) => {
+      if (field1.value !== field2.value) {
+        field2.setCustomValidity('invalid');
+        field2.classList.add('is-invalid');
+      } else {
+        field2.setCustomValidity('');
+        field2.classList.remove('is-invalid');
+      }
+    };
+
+    confirmEmail.addEventListener('input', () => validateMatch(email, confirmEmail));
+    confirmPassword.addEventListener('input', () => validateMatch(password, confirmPassword));
+
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      validateMatch(email, confirmEmail);
+      validateMatch(password, confirmPassword);
+      form.classList.add('was-validated');
+    }, false);
+  </script>
+</body>
+</html>
